@@ -1,0 +1,10 @@
+{
+  "source": "sklearn.datasets.make_blobs",
+  "purpose": "small public synthetic notebook example",
+  "n_samples": 90,
+  "n_features": 2,
+  "centers": 3,
+  "cluster_std": 0.8,
+  "random_state": 42,
+  "external_labels_saved": false
+}

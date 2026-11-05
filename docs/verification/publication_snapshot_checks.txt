@@ -1,0 +1,18 @@
+Publication snapshot completeness verification — 2026-11-05
+
+Working directory: /tmp/ba-publication-w1egjsld
+Interpreter: /home/vxh/Desktop/New Folder/ba-clustering/.venv/bin/python
+PYTHONPATH: /tmp/ba-publication-w1egjsld/src
+MPLCONFIGDIR: /tmp/ba-matplotlib
+
+Command: python -m pytest -q
+Result: 372 passed in 5.18s; exit code 0.
+
+Independent import check:
+import ba_clustering; print(ba_clustering.__file__)
+Result: /tmp/ba-publication-w1egjsld/src/ba_clustering/__init__.py
+
+Thus tests imported the publication snapshot, not the original editable source. Bulk
+pilot results, notebook session raw outputs and private user data were absent from this
+snapshot. Existing interpreter/dependencies were reused; this was not a fresh installation.
+No formal experiment was run. Test outputs stayed in temporary directories.

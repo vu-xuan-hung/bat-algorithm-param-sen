@@ -1,0 +1,141 @@
+{
+  "purpose": "takeover audit; historical files are read only",
+  "experiments": {
+    "smoke": {
+      "rows": 8,
+      "manifest_hash_matches_current_spec_and_data": true,
+      "summary_matches_raw": true,
+      "files_sha256": {
+        "results/smoke/runs.jsonl": "9af05cc3c1f83e754aa1ffa07d7b7a0e348aeb581e0c32b2bdc8bc288a0dca8f",
+        "results/smoke/manifest.json": "9958816f1c478f25da7847f42d9c638255531af910fae83e411e8e41cea09daa",
+        "results/smoke/runs.csv": "460e7a18a36c729760abcf4d56eb2e57f0c34fdb2e4aafe8cc642cd0ac7d6e4b",
+        "results/smoke/summary.csv": "2f68f1d94a006c4897564b36f23cd6d369c052b3c148935829f2fa5b530beb0a",
+        "results/smoke/paired_vs_reference.csv": "d9e8cd9e5af29184d18a482210da74ef4e37423115a52b349d8eb653575dfa29",
+        "results/smoke/figures/convergence_iris_f_max.png": "c14988938a14e1f79ff44a2e6eb31cddabb243e4467db9e944ab45ea2c445ba3",
+        "results/smoke/figures/main_effects_iris.png": "be8323e7d418462ec9d6346ce4ee73472ec65d2b761d194839d1daea5413219c",
+        "results/smoke/figures/convergence_iris_A0.png": "778ee4f634184b59ba860b3901c210599d9d58fe9dcd57a7cf9abca1e6e25b28"
+      }
+    },
+    "baseline_pilot": {
+      "rows": 60,
+      "manifest_hash_matches_current_spec_and_data": true,
+      "summary_matches_raw": true,
+      "files_sha256": {
+        "results/baseline_pilot/runs.jsonl": "d13d70c45139b225a6f512dccdd2336f3b931b2b1e9d1bef631ba9f2d1a15282",
+        "results/baseline_pilot/manifest.json": "e7558ee61d53c107a3eff313772c48ed8993c85c9e147b23cb5a2f3de1f32d0e",
+        "results/baseline_pilot/runs.csv": "ef618107ca9b919946b6591efc5434290843769eb87dd11ac73362449e5955ee",
+        "results/baseline_pilot/summary.csv": "08babec3fffd0521642d7899b80f1b473d6ff1e79eed5bd7bfd41f447bac2e13",
+        "results/baseline_pilot/paired_vs_reference.csv": "143f298cd9b1dda4836374502fa919e184088b36d44cf6f47c44e50d7bdf2d56",
+        "results/baseline_pilot/figures/baseline_synthetic.png": "49ddcfbdf1fff510dfd5b2a464558f19e78c496f3c0823ada97b53764511b05f",
+        "results/baseline_pilot/figures/baseline_iris.png": "221547d4689ddcff748f7bb744e9697b76c36b44670141bb59cadd5ac4b7190d",
+        "results/baseline_pilot/figures/baseline_wine.png": "ff33dbd2c7d9f22ba93d193efe08a878a21251237937820d9fa3fa37651a9fc5"
+      }
+    },
+    "ofat_pilot": {
+      "rows": 780,
+      "manifest_hash_matches_current_spec_and_data": true,
+      "summary_matches_raw": true,
+      "files_sha256": {
+        "results/ofat_pilot/runs.jsonl": "f858f117fe4ddcffc71ebceb4bb80804b7643541a7626c82caf24dae386b087b",
+        "results/ofat_pilot/manifest.json": "fb3925858b1c3b5f69f349d26dde92c40add22bd00bdb2cc7022dfdfa4217f64",
+        "results/ofat_pilot/runs.csv": "2eba2f83819515b29c1b60593e56c8ba94b4891f9e5f7c80b3964cc33675f60c",
+        "results/ofat_pilot/summary.csv": "2d9586e1fd94d7031eb53f2165a7281bb9d349621cc46a5f9b8b0cf0f7fd65fc",
+        "results/ofat_pilot/paired_vs_reference.csv": "26a226b471fec2849f169f72646183e75722163201f3cd18f7a8dc1520d19b58",
+        "results/ofat_pilot/figures/convergence_iris_f_max.png": "3f185a7d00396e929e76dfa449f365cfc73dcd1bf98537d31a7fedf0adda69ff",
+        "results/ofat_pilot/figures/convergence_wine_alpha.png": "1fceaa0342637176df67875af1a1774864e4a5502e4801fd4a9b79e981dbdd7b",
+        "results/ofat_pilot/figures/convergence_wine_A0.png": "7bbd8c56e1124e51d0d0f8919bc5dedb157fa5a455cd79778077118dad232892",
+        "results/ofat_pilot/figures/convergence_iris_alpha.png": "4d9b30010bdd34e48e6ae696611551d069a84c352ff11ad31b5dbc7faec5b07d",
+        "results/ofat_pilot/figures/convergence_synthetic_f_min.png": "7fcecedc41700a2abcf47355037be2eac2d928452d73577b02118312a8185ff6",
+        "results/ofat_pilot/figures/convergence_wine_f_min.png": "fc7549569b3ed7e00544101bbe635c046535a15fc841d0df59ccb3006d2a7bb9",
+        "results/ofat_pilot/figures/convergence_synthetic_A0.png": "3b291507dcf0b70c057e7c03a20d3fedd34a5fe7f3bf653a018c7b2da5b6ff7d",
+        "results/ofat_pilot/figures/convergence_wine_f_max.png": "496924d5c670282b6b58c31647ca5c9660c05b57cb93b8e7e316b0551aa1fa6f",
+        "results/ofat_pilot/figures/convergence_wine_gamma.png": "f8ab587063b214ddd78de6f73b0013d03a1314f5ae09405250dec0652a324662",
+        "results/ofat_pilot/figures/main_effects_iris.png": "310419a392db2c1ec41e0dd5a2d9cffff7a7ca2c4b3015666e57269716b053b1",
+        "results/ofat_pilot/figures/convergence_synthetic_alpha.png": "e1c636791aa25e41d5de14cd63117cab99f18897fd3613bfe8a02cada5e4a86f",
+        "results/ofat_pilot/figures/convergence_iris_gamma.png": "66d004eb9d6544d3e3e6fe1af39f70b87c0bdff0718918d281e4e4c7de79a9dd",
+        "results/ofat_pilot/figures/convergence_iris_A0.png": "c6323909ed127903eedb87df024685e2720f55d646a7388cfc359ae2421c5579",
+        "results/ofat_pilot/figures/convergence_wine_r0.png": "98014593c7657d34cb2d70240eed6a4dd90fce214cf4f729a30aa2cd69e0484e",
+        "results/ofat_pilot/figures/convergence_synthetic_r0.png": "fb77048e87eb1943016b524b6154dc88605fa17f961be5788d70a120f44179e2",
+        "results/ofat_pilot/figures/main_effects_wine.png": "607cef8cc47e16740fd20da3ca0802c3a73d5ab80fa71a9e0216fe959793c767",
+        "results/ofat_pilot/figures/convergence_synthetic_f_max.png": "47b579a16c7391e2171a25ec0924ec90bdd351ba54d08bd7c3c79d6d775839e6",
+        "results/ofat_pilot/figures/main_effects_synthetic.png": "02831c27617b05a1ce8b32904cd9cf277e009b68ec88debee95524bea54e8870",
+        "results/ofat_pilot/figures/convergence_synthetic_gamma.png": "6b3d9fbf0af4a0221d4b3751141e0b2755965f0225ec4d48801a46d74af39812",
+        "results/ofat_pilot/figures/convergence_iris_r0.png": "3b78dd22bb6515065047c13a6ddf04e5d14fa448af88786340ebc68dc819635f",
+        "results/ofat_pilot/figures/convergence_iris_f_min.png": "f7233270ffb1fcc1353aeeff6168ea0dde4ba21783431153052a0b82e28c7197"
+      }
+    },
+    "interaction_pilot": {
+      "rows": 100,
+      "manifest_hash_matches_current_spec_and_data": true,
+      "summary_matches_raw": true,
+      "files_sha256": {
+        "results/interaction_pilot/runs.jsonl": "36b0eb923247c9477ca59575d05c2ed5fe55aff911ac16608ffcb9e94b927cb9",
+        "results/interaction_pilot/manifest.json": "a91a99a4081f1a2a266ac1e7dfe7f134aef9a7fe8e6deceeeaa7e0f24d8c1ed8",
+        "results/interaction_pilot/runs.csv": "2a78e79fe9c0a927751d5dfb482e887d278064b4e27ba9bf48ba5877609201ff",
+        "results/interaction_pilot/summary.csv": "339f962851ee122c5cf7a0c1d1829e956a270ae75f8d126859de61c51a9638c1",
+        "results/interaction_pilot/paired_vs_reference.csv": "224db4800fb31603925f08a38aa96a0be3145684ea134cd5d5174699a8e8ac89",
+        "results/interaction_pilot/figures/interaction_iris_A0_r0.png": "979908f1a13a3c0d3d5fc26441ba631dd3a6c23060400ade8ea757eb1457331f"
+      }
+    }
+  },
+  "reruns": [
+    {
+      "experiment": "baseline_pilot",
+      "run_id": "iris__kmeans__kmeans__seed9000",
+      "all_nonruntime_metric_fields_exact_match": true
+    },
+    {
+      "experiment": "baseline_pilot",
+      "run_id": "iris__ba__reference__seed9000",
+      "all_nonruntime_metric_fields_exact_match": true
+    },
+    {
+      "experiment": "baseline_pilot",
+      "run_id": "wine__kmeans__kmeans__seed9000",
+      "all_nonruntime_metric_fields_exact_match": true
+    },
+    {
+      "experiment": "baseline_pilot",
+      "run_id": "wine__ba__reference__seed9000",
+      "all_nonruntime_metric_fields_exact_match": true
+    },
+    {
+      "experiment": "baseline_pilot",
+      "run_id": "synthetic__kmeans__kmeans__seed9000",
+      "all_nonruntime_metric_fields_exact_match": true
+    },
+    {
+      "experiment": "baseline_pilot",
+      "run_id": "synthetic__ba__reference__seed9000",
+      "all_nonruntime_metric_fields_exact_match": true
+    },
+    {
+      "experiment": "ofat_pilot",
+      "run_id": "iris__ba__f_min=1.5__seed9000",
+      "all_nonruntime_metric_fields_exact_match": true
+    },
+    {
+      "experiment": "ofat_pilot",
+      "run_id": "wine__ba__f_min=1.5__seed9000",
+      "all_nonruntime_metric_fields_exact_match": true
+    },
+    {
+      "experiment": "ofat_pilot",
+      "run_id": "synthetic__ba__f_min=1.5__seed9000",
+      "all_nonruntime_metric_fields_exact_match": true
+    },
+    {
+      "experiment": "interaction_pilot",
+      "run_id": "iris__ba__A0=0.25|r0=0__seed9000",
+      "all_nonruntime_metric_fields_exact_match": true
+    }
+  ],
+  "ofat_acceptance": {
+    "n_accepted": 161924,
+    "n_accepted_global": 230,
+    "n_accepted_local": 161694,
+    "n_local_candidates": 1127360,
+    "n_evaluations": 2250000,
+    "global_candidates": 1100140
+  }
+}

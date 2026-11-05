@@ -1,0 +1,74 @@
+# Declared experiments. Run one with: ba-clustering experiment <id>
+#
+# SEED DISCIPLINE: `pilot` is for checking feasibility and may be looked at freely.
+# `discovery` is for parameter screening. `confirmation` must remain unseen until a
+# candidate configuration has been frozen from discovery data alone. These rosters
+# must never overlap; tests/test_experiments.py enforces this.
+#
+# Sweep levels are hypotheses to test, not recommendations.
+
+base_config: default.yaml
+
+seed_rosters:
+  smoke: [0, 1]
+  pilot: [9000, 9001, 9002, 9003, 9004, 9005, 9006, 9007, 9008, 9009]
+  discovery: [1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009]
+  confirmation: [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+                 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
+
+experiments:
+  smoke:
+    description: Fast end-to-end check of the pipeline. Its output is not research evidence.
+    design: ofat
+    datasets: [iris]
+    seeds: smoke
+    ba_overrides: {population_size: 5, max_iterations: 5}
+    factors:
+      A0: [0.25, 0.5]
+      f_max: [1.0, 2.0]
+
+  baseline_pilot:
+    description: Pilot comparison of K-Means and reference BA on pilot seeds (roadmap W3.2, W4.4).
+    design: baseline
+    datasets: [iris, wine, synthetic]
+    seeds: pilot
+
+  ofat_pilot:
+    description: Pilot OFAT over all six parameters on pilot seeds, to check feasibility (W4.4).
+    design: ofat
+    datasets: [iris, wine, synthetic]
+    seeds: pilot
+    factors: &ofat_levels
+      A0: [0.1, 0.25, 0.5, 0.75, 1.0]
+      r0: [0.0, 0.25, 0.5, 0.75, 1.0]
+      alpha: [0.5, 0.7, 0.9, 0.95, 1.0]
+      gamma: [0.1, 0.5, 0.9, 2.0, 5.0]
+      f_min: [0.0, 0.25, 0.5, 1.0, 1.5]
+      f_max: [0.5, 1.0, 2.0, 5.0, 10.0]
+
+  interaction_pilot:
+    description: Demonstrates the 3x3 grid design. The pair is a placeholder, not a screening result.
+    design: grid
+    datasets: [iris]
+    seeds: pilot
+    factors:
+      A0: [0.25, 0.5, 1.0]
+      r0: [0.0, 0.5, 1.0]
+
+  # ------------------------------------------------------------------------------
+  # Formal experiments. These have NOT been run. Freeze the protocol first (W4.3).
+  # ------------------------------------------------------------------------------
+  ofat_discovery:
+    description: Formal OFAT screening on discovery seeds (W5.1 to W6.1). Not run yet.
+    design: ofat
+    datasets: [iris, wine, synthetic]
+    seeds: discovery
+    factors: *ofat_levels
+
+  confirmation:
+    description: >-
+      Unseen-seed confirmation (W7.2). Do not run until a candidate is frozen; then copy this
+      entry, and put the frozen values in ba_overrides. As written it evaluates the reference.
+    design: baseline
+    datasets: [iris, wine, synthetic]
+    seeds: confirmation

@@ -1,0 +1,59 @@
+{
+  "notebook": "notebooks/parameter_sensitivity.ipynb",
+  "sha256": "eb8a94119b5de5c7a7d6cea0de1bbe051793fa1514dd40214387c4f598819787",
+  "execution": {
+    "runner": "sequential Python cells; not a Jupyter kernel",
+    "python": "3.12.13",
+    "executed_code_cells": 10,
+    "status": "passed"
+  },
+  "embedded_pngs": 11,
+  "default_dataset": "datasets/example_blobs.csv",
+  "default_shape": [
+    90,
+    2
+  ],
+  "default_clusters": 3,
+  "ofat_completed": 28,
+  "grid_completed": 20,
+  "seeds": [
+    0,
+    1
+  ],
+  "session_directory": "results/notebook_20261105T105340Z_b4df6629",
+  "assertions": {
+    "purpose": "engineering_smoke_not_confirmed_research",
+    "dataset_path": "/home/vxh/Desktop/New Folder/ba-clustering/datasets/example_blobs.csv",
+    "data_sha256": "1011e46ca9a1f687ee07e0f4614a6ddc1bf5a11122e851f219ce30d91e3f8a07",
+    "ofat_records": 28,
+    "seeds": [
+      0,
+      1
+    ],
+    "toy_checks_passed": true,
+    "reference_recomputation_passed": true,
+    "determinism_passed": true,
+    "historical_results_overwritten": false,
+    "ofat_manifest": "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/ofat/manifest.json",
+    "generated_pngs": [
+      "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/figures/acceptance_mechanism.png",
+      "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/figures/baseline_variation.png",
+      "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/figures/cluster_projection.png",
+      "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/grid/figures/interaction_custom_A0_r0.png",
+      "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/ofat/figures/convergence_custom_A0.png",
+      "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/ofat/figures/convergence_custom_alpha.png",
+      "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/ofat/figures/convergence_custom_f_max.png",
+      "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/ofat/figures/convergence_custom_f_min.png",
+      "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/ofat/figures/convergence_custom_gamma.png",
+      "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/ofat/figures/convergence_custom_r0.png",
+      "/home/vxh/Desktop/New Folder/ba-clustering/results/notebook_20261105T105340Z_b4df6629/ofat/figures/main_effects_custom.png"
+    ]
+  },
+  "custom_csv_integration_test": "passed: one feature, text label excluded, K=2, path with spaces, temporary output root",
+  "visual_inspection": [
+    "main_effects_custom.png",
+    "acceptance_mechanism.png"
+  ],
+  "jupyter_kernel_gui_verified": false,
+  "optional_dependency_install_error": "PyPI DNS resolution failure; no notebook package installed"
+}

@@ -1,0 +1,152 @@
+$ .venv/bin/python -m pytest
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.2.0, pluggy-1.7.0
+rootdir: /home/vxh/Desktop/New Folder/ba-clustering
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.1.0
+collected 372 items
+
+tests/test_ba_updates.py ..............................................  [ 12%]
+tests/test_boundaries.py ..........                                      [ 15%]
+tests/test_clustering.py ............................................... [ 27%]
+.................................................                        [ 40%]
+tests/test_config.py ................................................... [ 54%]
+....                                                                     [ 55%]
+tests/test_experiments.py .............................................. [ 68%]
+.............                                                            [ 71%]
+tests/test_fitness.py ...................                                [ 76%]
+tests/test_frequency_diagnostics.py ..                                   [ 77%]
+tests/test_integration.py .......                                        [ 79%]
+tests/test_notebook.py ...                                               [ 79%]
+tests/test_reproducibility.py ...............                            [ 83%]
+tests/test_state_consistency.py ........................................ [ 94%]
+....................                                                     [100%]
+
+============================= 372 passed in 5.02s ==============================
+exit=0
+
+$ .venv/bin/python -m pytest -m integration
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.2.0, pluggy-1.7.0
+rootdir: /home/vxh/Desktop/New Folder/ba-clustering
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.1.0
+collected 372 items / 364 deselected / 8 selected
+
+tests/test_integration.py .......                                        [ 87%]
+tests/test_notebook.py .                                                 [100%]
+
+====================== 8 passed, 364 deselected in 2.79s =======================
+exit=0
+
+$ .venv/bin/ruff check src tests scripts
+All checks passed!
+exit=0
+
+$ .venv/bin/ruff format --check src tests scripts
+34 files already formatted
+exit=0
+
+$ .venv/bin/mypy
+Success: no issues found in 16 source files
+exit=0
+
+$ .venv/bin/ba-clustering --help
+usage: ba-clustering [-h] {run,list,experiment,plot} ...
+
+Bat Algorithm clustering and parameter sensitivity.
+
+positional arguments:
+  {run,list,experiment,plot}
+    run                 Run BA and K-Means once and print a JSON summary.
+    list                List experiments.
+    experiment          Run a declared experiment.
+    plot                Generate figures from saved results.
+
+options:
+  -h, --help            show this help message and exit
+exit=0
+
+$ .venv/bin/ba-clustering list
+smoke: Fast end-to-end check of the pipeline. Its output is not research evidence.
+baseline_pilot: Pilot comparison of K-Means and reference BA on pilot seeds (roadmap W3.2, W4.4).
+ofat_pilot: Pilot OFAT over all six parameters on pilot seeds, to check feasibility (W4.4).
+interaction_pilot: Demonstrates the 3x3 grid design. The pair is a placeholder, not a screening result.
+ofat_discovery: Formal OFAT screening on discovery seeds (W5.1 to W6.1). Not run yet.
+confirmation: Unseen-seed confirmation (W7.2). Do not run until a candidate is frozen; then copy this entry, and put the frozen values in ba_overrides. As written it evaluates the reference.
+exit=0
+
+$ .venv/bin/python scripts/run_baseline.py --help
+usage: ba-clustering experiment [-h] [--experiments EXPERIMENTS]
+                                [--output OUTPUT] [--verbose]
+                                [--overwrite | --resume]
+                                experiment_id
+
+positional arguments:
+  experiment_id
+
+options:
+  -h, --help            show this help message and exit
+  --experiments EXPERIMENTS
+  --output OUTPUT       Root directory for results.
+  --verbose             Print one line per run.
+  --overwrite           Delete existing results first.
+  --resume              Keep completed runs and continue.
+exit=0
+
+$ .venv/bin/python scripts/run_parameter_sweep.py --help
+usage: ba-clustering experiment [-h] [--experiments EXPERIMENTS]
+                                [--output OUTPUT] [--verbose]
+                                [--overwrite | --resume]
+                                experiment_id
+
+positional arguments:
+  experiment_id
+
+options:
+  -h, --help            show this help message and exit
+  --experiments EXPERIMENTS
+  --output OUTPUT       Root directory for results.
+  --verbose             Print one line per run.
+  --overwrite           Delete existing results first.
+  --resume              Keep completed runs and continue.
+exit=0
+
+$ .venv/bin/python scripts/generate_plots.py --help
+usage: ba-clustering plot [-h] results_directory
+
+positional arguments:
+  results_directory
+
+options:
+  -h, --help         show this help message and exit
+exit=0
+
+README.md: 1 Python examples executed successfully
+
+docs/API_REFERENCE.md: 3 Python examples executed successfully
+
+$ .venv/bin/ba-clustering experiment smoke --output /tmp/ba-takeover-smoke-guun0c9l
+/tmp/ba-takeover-smoke-guun0c9l/smoke: 8 completed, 0 failed, 0 kept from a previous run.
+exit=0
+
+$ .venv/bin/ba-clustering experiment smoke --output /tmp/ba-takeover-smoke-guun0c9l --resume
+/tmp/ba-takeover-smoke-guun0c9l/smoke: 0 completed, 0 failed, 8 kept from a previous run.
+exit=0
+
+$ .venv/bin/ba-clustering plot /tmp/ba-takeover-smoke-guun0c9l/smoke
+/tmp/ba-takeover-smoke-guun0c9l/smoke/figures/main_effects_iris.png
+/tmp/ba-takeover-smoke-guun0c9l/smoke/figures/convergence_iris_A0.png
+/tmp/ba-takeover-smoke-guun0c9l/smoke/figures/convergence_iris_f_max.png
+exit=0
+
+Repeated experiment without an option: exit=2, all temporary result hashes unchanged
+error: /tmp/ba-takeover-smoke-guun0c9l/smoke already contains results. Use a new experiment ID, or pass an explicit --resume or --overwrite.
+
+README CLI run example: exit=0, BA evaluations=180
+
+77 local Markdown link targets checked
+
+49 original result files: SHA256 unchanged

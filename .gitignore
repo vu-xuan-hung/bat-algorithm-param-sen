@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Generated experiment outputs. Commit selected results deliberately with: git add -f
+results/*
+!results/.gitkeep
+
+# Datasets are not tracked by default; record their provenance instead.
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# User-provided CSV files stay local; only the synthetic example is publishable.
+datasets/*
+!datasets/README.md
+!datasets/example_blobs.csv
+!datasets/example_blobs.provenance.json
+.ipynb_checkpoints/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,42 @@
+# Base configuration shared by every experiment and by `ba-clustering run`.
+#
+# These values are the group's *reference for screening*, from the "Evaluation Protocol"
+# sheet of the roadmap workbook. They are NOT claimed to be optimal for anything.
+
+ba:
+  # Pilot budget: 30 bats and exactly 30 * (1 + 99) = 3000 SSE evaluations per run.
+  population_size: 30
+  max_iterations: 99
+  A0: 0.5
+  r0: 0.5
+  alpha: 0.9
+  gamma: 0.9
+  f_min: 0.0
+  f_max: 2.0
+  # Fixed budget. To enable early stopping, set patience to an integer >= 1.
+  tolerance: 0.0
+  patience: null
+
+preprocessing:
+  method: zscore   # zscore | none
+
+kmeans:
+  n_init: 10       # Multi-start. Costs are counted across all restarts.
+  init: k-means++  # k-means++ | random
+  max_iter: 300
+  tol: 0.0001
+
+datasets:
+  iris:
+    loader: iris
+    n_clusters: 3
+  wine:
+    loader: wine
+    n_clusters: 3
+  synthetic:
+    loader: synthetic
+    n_clusters: 4
+    n_samples: 300
+    n_features: 4
+    cluster_std: 1.5
+    seed: 42       # Data seed. It is independent of the algorithm seeds.
