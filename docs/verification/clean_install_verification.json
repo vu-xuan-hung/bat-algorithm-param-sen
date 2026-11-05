@@ -1,0 +1,172 @@
+{
+  "workdir": "/tmp/ba-clean-verification-vytbfq0c",
+  "repository": "/home/vxh/Desktop/New Folder/bat-algorithm-param-sen",
+  "commands": [
+    {
+      "name": "build_dependencies",
+      "args": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "setuptools>=68",
+        "wheel"
+      ],
+      "exit_code": 0,
+      "log": "/tmp/ba-clean-verification-vytbfq0c/build_dependencies.log"
+    },
+    {
+      "name": "legacy_lock_install",
+      "args": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-lock.txt"
+      ],
+      "exit_code": 0,
+      "log": "/tmp/ba-clean-verification-vytbfq0c/legacy_lock_install.log"
+    },
+    {
+      "name": "editable_install",
+      "args": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-deps",
+        "--no-build-isolation",
+        "-e",
+        "."
+      ],
+      "exit_code": 0,
+      "log": "/tmp/ba-clean-verification-vytbfq0c/editable_install.log"
+    },
+    {
+      "name": "notebook_dependencies",
+      "args": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-e",
+        ".[notebooks]"
+      ],
+      "exit_code": 0,
+      "log": "/tmp/ba-clean-verification-vytbfq0c/notebook_dependencies.log"
+    },
+    {
+      "name": "pip_check",
+      "args": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "log": "/tmp/ba-clean-verification-vytbfq0c/pip_check.log"
+    },
+    {
+      "name": "pip_freeze",
+      "args": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "exit_code": 0,
+      "log": "/tmp/ba-clean-verification-vytbfq0c/pip_freeze.log"
+    }
+  ],
+  "verification": [
+    {
+      "command": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-m",
+        "pytest"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-m",
+        "pytest",
+        "-m",
+        "integration"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "tests",
+        "scripts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "tests",
+        "scripts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-m",
+        "mypy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/python",
+        "-c",
+        "import ba_clustering,sys; print(sys.executable); print(ba_clustering.__file__)"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/ba-clustering",
+        "--help"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/ba-clustering",
+        "list"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/tmp/ba-clean-verification-vytbfq0c/venv/bin/ba-clustering",
+        "run",
+        "--dataset",
+        "iris",
+        "--seed",
+        "0",
+        "--set",
+        "max_iterations=5"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "system_site_packages": false,
+  "note": "Fresh venv, original pinned runtime/dev lock installed, then editable package and notebook extras; historical lock was not changed."
+}

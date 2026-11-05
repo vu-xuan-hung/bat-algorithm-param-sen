@@ -22,7 +22,7 @@ Trong đó có notebook_settings.json, notebook_evidence.json, ofat/ và grid/ v
 manifest/raw JSONL/CSV/summary/comparisons; PNG nằm trong figures/ của phiên/design.
 Output hiện có trong notebook thuộc dataset/cấu hình được in trong chính notebook.
 
-## Cách thực thi đã kiểm chứng
+## Phiên kiểm tra ban đầu bằng sequential runner (lịch sử)
 
 Môi trường không có Jupyter và tải nbformat/nbclient/ipykernel thất bại do DNS.
 Vì vậy notebook được kiểm tra bằng **sequential Python cell runner**, không phải kernel
@@ -49,3 +49,59 @@ BA_NOTEBOOK_CLUSTERS, BA_NOTEBOOK_LABEL_COLUMN và BA_NOTEBOOK_OUTPUT_ROOT khi t
 Sau khi notebook chạy thành công, bằng chứng chứng minh các assertion/pipeline trên các
 input đã thử. Nó không chứng minh BA vượt K-Means, tìm tối ưu toàn cục, hay mọi dataset
 đều có cùng độ nhạy. Nghiên cứu formal cần giao thức freeze trong EXPERIMENT_DESIGN.
+
+
+## Kiểm chứng mới: kernel Jupyter thực tế và cài đặt sạch
+
+Sau khi mạng được mở, cài đặt sạch đã qua với lock gốc và .[notebooks]. Đã chạy notebook
+qua nbclient với kernel ipykernel dùng chính Python của venv sạch: schema nbformat hợp lệ,
+10 code cells, 48 records thành công, 11 inline PNGs, không lỗi; chỉ seed 0,1. Artifact
+riêng: [notebook Jupyter](verification/parameter_sensitivity.jupyter.ipynb),
+[audit](verification/jupyter_kernel_audit.json), [môi trường](verification/clean_install_verification.json).
+Notebook gốc và output nghiên cứu được giữ nguyên. Chưa kiểm tra tương tác giao diện
+VS Code; đó là phần acceptance thủ công còn lại, không phải thiếu kiểm chứng kernel.
+
+Tạo venv và cài theo README, sau đó `.venv/bin/python -m pip install -e ".[notebooks]"`.
+Để kiểm tra lại bằng kernel thật mà không ghi đè notebook/results cũ, dùng đoạn Python
+bên dưới từ project root với interpreter của venv. Nó tạo kernelspec/output tạm riêng và
+chạy code notebook thật, không dùng sequential runner:
+
+```python
+import json
+import sys
+import tempfile
+from pathlib import Path
+import nbformat
+from nbclient import NotebookClient
+from jupyter_client import KernelManager
+from jupyter_client.kernelspec import KernelSpecManager
+
+root = Path.cwd()
+work = Path(tempfile.mkdtemp(prefix="ba-jupyter-check-"))
+kernel_dir = work / "kernels" / "ba-verify"
+kernel_dir.mkdir(parents=True)
+(kernel_dir / "kernel.json").write_text(json.dumps({
+    "argv": [sys.executable, "-m", "ipykernel_launcher", "-f", "{connection_file}"],
+    "display_name": "BA verified environment", "language": "python",
+    "env": {"BA_NOTEBOOK_OUTPUT_ROOT": str(work / "results"),
+            "MPLCONFIGDIR": str(work / "matplotlib"),
+            "OMP_NUM_THREADS": "1", "OPENBLAS_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"},
+}))
+manager = KernelManager(kernel_name="ba-verify",
+    kernel_spec_manager=KernelSpecManager(kernel_dirs=[str(work / "kernels")]))
+notebook = nbformat.read(root / "notebooks/parameter_sensitivity.ipynb", as_version=4)
+nbformat.validate(notebook)
+NotebookClient(notebook, km=manager, timeout=180, allow_errors=False,
+    resources={"metadata": {"path": str(root)}}).execute()
+nbformat.validate(notebook)
+# Metadata inherited from the source refers to its historical sequential run.
+notebook.metadata["execution_verification"] = {"runner": "real nbclient/ipykernel",
+    "status": "passed", "note": "GUI not tested"}
+with (work / "executed.ipynb").open("x") as handle:
+    nbformat.write(notebook, handle)
+print(work)
+```
+
+Đoạn này dành cho notebook mặc định; thay dataset/K/label theo hướng dẫn ở đầu khi cần.
+Không dùng formal seed để kiểm tra môi trường. Cài dependency mới qua mạng đã được kiểm
+chứng, nhưng không có offline wheel bundle hay bảo đảm mọi OS/Python version.

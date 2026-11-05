@@ -1,10 +1,23 @@
 # Handoff for a session with zero prior context
 
-Last verification: **2026-11-05**. Last verified commit: **unavailable**; no usable Git
-repository exists in the project or parent. No commit or Git initialization was performed.
-Project root: /home/vxh/Desktop/New Folder/ba-clustering. Parent group documents are
-source material and were preserved. Read ../ group files only when investigating their
-claims; do not rewrite them as an incidental code task.
+Last verification: **2026-11-05**, continuation after network access was restored.
+Canonical Git repository: **/home/vxh/Desktop/New Folder/bat-algorithm-param-sen**.
+Branch: **main**, origin: **https://github.com/vu-xuan-hung/bat-algorithm-param-sen.git**.
+Verified published source snapshot: **19f20b29271769e7c26d9aa42e3c33c00db4d5d6**.
+The follow-up commit containing this verification handoff changes only docs/evidence;
+use `git rev-parse HEAD` and `git ls-remote origin refs/heads/main` for its exact current SHA.
+
+The user selected this NEW destination after the prior bat-algorithm publication attempt.
+It was verified empty before push, so no remote history was replaced. Snapshot 19f20b2
+and the original bundle were verified; ls-remote and GitHub API confirmed the published SHA.
+The older bat-algorithm repository received no writes in this continuation.
+
+Original archive: **/home/vxh/Desktop/New Folder/ba-clustering**, without .git; its historical
+research output directories and parent group documents stay untouched. Current docs/evidence
+are mirrored there for continuity. Use the canonical clone for Git operations. Sections
+below preserve the earlier audit history; the latest verification section supersedes its
+network/fresh-install/kernel limitations. Do not mistake historical failure reports for
+current blockers.
 
 ## Current state and completed work
 
@@ -40,7 +53,7 @@ writing. Five other rejected paths were absent, so new files replaced no earlier
 - CLI help/list/run; smoke, resume, overwrite refusal, plots in a fresh temporary root;
   scripts' help; Python snippets and local documentation links checked. See checks.txt.
 
-## Known bugs and limitations
+## Known bugs and limitations at the original audit
 
 The two confirmed validation defects above are fixed. No BA equation defect was found.
 Tests do not prove complete correctness. Low-level optimizer helpers trust typed floating
@@ -125,7 +138,7 @@ AGENTS, CHANGELOG and this handoff. Do not claim confirmed sensitivity findings 
 If prior file-write rejection would be bypassed by substantial replacement, obtain approval
 of a concrete reviewed change. Do not commit without a user request.
 
-## Ready-to-copy continuation prompt
+## Historical continuation prompt (superseded by latest section below)
 
 Continue the existing ba-clustering project in /home/vxh/Desktop/New Folder/ba-clustering.
 Read AGENTS.md, docs/HANDOFF.md, ALGORITHM_SPEC.md, DECISIONS.md and SCIENTIFIC_AUDIT.md.
@@ -167,3 +180,74 @@ results and all private/user datasets; it includes the executed synthetic notebo
 selected audit evidence under docs/verification. A fresh clone will not contain the
 historical raw pilot files. Reproduce engineering checks into fresh output directories;
 do not present newly generated runs as the original historical evidence.
+
+
+## Latest verified continuation: GitHub, clean install and real kernel
+
+Network now works in the primary session. GitHub authentication was validated without
+exposing credentials. The resumed subagent retained its old network restrictions, so the
+primary agent performed the actual clone/fetch/push. The subagent provided a read-only
+protocol/code review; no additional agents or remote writes to the old destination.
+
+- Original source directory: no Git metadata or unsaved work was overwritten. Bundle
+  verify/list-heads matched 19f20b2; the offline snapshot is the root of the new repository.
+- Clean Python **3.12.13** venv with **no system site packages**: installed setuptools/wheel,
+  unchanged requirements-lock.txt, editable package, and .[notebooks]; **pip check passed**.
+- Clean-env **372 tests passed in 4.98s**; separate **8 integration tests passed** with
+  364 deselected; Ruff clean, **34 files formatted**, strict mypy clean on **16 modules**.
+  CLI help/list/smoke also passed. Audit: verification/clean_install_verification.json;
+  exact output: verification/clean_install_checks.txt. Environment freeze is evidence,
+  not a replacement for the historical lock.
+- Real **nbclient/ipykernel Jupyter execution** with the clean interpreter passed schema
+  validation before/after, **10 code cells**, **48 successful records** (28 OFAT/20 grid),
+  **11 inline PNGs**, **no errors**, seeds **0,1** only. Separate executed artifact:
+  verification/parameter_sensitivity.jupyter.ipynb; audit: jupyter_kernel_audit.json.
+  Outputs went to a unique /tmp directory. Original notebook outputs were not replaced.
+  **VS Code GUI interaction remains unverified**; real kernel execution is now verified.
+- No src/, tests/, configs/, BA semantics or original dependency lock changed. No new
+  algorithm or formal seed execution. All original 948 research records remain preserved;
+  compare hashes in verification/pilot_audit.json rather than re-running historical outputs.
+
+### Remaining bounded tasks
+
+1. Review docs/FORMAL_PROTOCOL_PROPOSAL.md with the researchers: normalization, 33-config
+   pool, grids, paired inference, proposed practical thresholds, failure policy, power and
+   actual stock-runner budget. It is **NOT FROZEN / NOT RUN / NO EXECUTION AUTHORIZATION**.
+2. Before formal analysis, implement/test configuration deduplication for analysis (or a
+   separately accepted execution registry), Q/Z endpoints, complete-seed checks and the
+   declared Holm families. Today's CSV exporter does not implement this proposed protocol.
+3. Add reviewed confirmation definitions with distinct original-reference/candidate roles;
+   current confirmation template alone does not compare a tuned candidate with original C0.
+4. Resolve resume provenance and schema validation gaps (historical T2/T4) before long
+   runs, or establish a reviewed external immutable archive/identity gate.
+5. Optional manual acceptance: open the source notebook in VS Code with the fresh kernel;
+   verify GUI display. GUI acceptance is separate from the completed real-kernel execution.
+
+T3 fresh installation/source publication is now verified for this environment; cross-
+platform/Python-version testing and an offline wheel bundle remain outside that evidence.
+No formal phase should run until its freeze/analysis/approval requirements are satisfied.
+
+### Safe commands and next-agent prompt
+
+In the canonical clone, inspect before writes:
+
+```bash
+git status --short --branch
+git remote -v
+git fetch origin
+git log --oneline --graph --all -8
+git ls-remote origin refs/heads/main
+```
+
+If DNS fails, local status/log and bundle verification remain safe. Retry fetch/push only
+after connectivity returns; never use force, reset --hard, overwrite historical outputs,
+or create a replacement root commit. Use the current GitHub status document for the
+verified destination and snapshot. Newly authored verification docs can be pushed as an
+ordinary fast-forward continuation of main; unrelated future commits need authorization.
+
+Copyable prompt: Continue the existing project in the canonical bat-algorithm-param-sen
+clone; read AGENTS, this latest handoff, ALGORITHM_SPEC and FORMAL_PROTOCOL_PROPOSAL.
+Verify current HEAD/origin and actual evidence. Clean install, 372 tests/8 integration and
+real Jupyter 10 cells/48 records/11 PNGs passed. Preserve original archive/results and BA
+semantics. Start with protocol review/analysis prerequisites; do not run discovery or
+confirmation, alter rosters, force-push or commit unrelated work without authorization.

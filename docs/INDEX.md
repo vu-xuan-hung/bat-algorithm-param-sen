@@ -27,3 +27,10 @@ Evidence: [pilot audit](verification/pilot_audit.json),
 [command log](verification/checks.txt), [source hashes](verification/source_sha256.json).
 
 Notebook: [hướng dẫn CSV và biểu đồ](NOTEBOOK_GUIDE.md), [notebook đã có outputs](../notebooks/parameter_sensitivity.ipynb), [dataset mẫu](../datasets/README.md).
+
+
+Latest verification: [fresh-install audit](verification/clean_install_verification.json),
+[clean checks](verification/clean_install_checks.txt), [real-kernel audit](verification/jupyter_kernel_audit.json),
+[Jupyter-executed notebook](verification/parameter_sensitivity.jupyter.ipynb),
+[GitHub status](verification/publication_status.md),
+[formal proposal — not frozen or run](FORMAL_PROTOCOL_PROPOSAL.md).

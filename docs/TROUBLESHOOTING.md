@@ -5,14 +5,16 @@ an unactivated shell may otherwise select a different environment. --config and
 --experiments accept explicit paths. Import errors imply missing installation or incorrect
 interpreter; existing editable installation is verified, a new offline install is not.
 
-'not a git repository': this workspace has no usable Git metadata. Git status/branch/log
-and commit lookup cannot establish history. Do not invent a commit or initialize Git
-without a user request. Current records therefore have git_commit=null.
+'not a git repository': the original ba-clustering/ archive intentionally has no .git.
+Use the sibling bat-algorithm-param-sen/ Git clone for status/branch/remote/push. Do not
+initialize or reset the archive to fix this error. Historical records keep git_commit=null;
+new runs inside the clone record its current commit.
 
 'setuptools.build_meta' unavailable during --no-build-isolation: the build backend is
 missing in that interpreter. The runtime lock is not a complete offline build bundle.
-Provide setuptools>=68 and build dependencies before trying an offline install; otherwise
-use the existing verified environment. The takeover's isolated attempt failed here.
+Provide setuptools>=68 and build dependencies before trying an offline install. The
+earlier offline attempt failed here; the latest online fresh install passed after
+installing those build tools. See REPRODUCIBILITY for the verified sequence.
 uv may also fail acquiring its default cache lock because the user cache is read-only;
 set UV_CACHE_DIR to a writable location for future setup. New cache does not supply wheels.
 

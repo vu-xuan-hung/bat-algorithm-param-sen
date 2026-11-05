@@ -1,5 +1,11 @@
 # Implementation Plan
 
+> Historical audit/plan below is preserved. Latest continuation verified a clean online
+> installation and real Jupyter kernel, and published snapshot 19f20b2 to the new
+> bat-algorithm-param-sen repository. See HANDOFF.md and verification/publication_status.md
+> for current state; the earlier fresh-install/Git limitations below are superseded.
+
+
 > Written **before** any implementation code, as required by the project brief.
 > It records what the audit found and what was intended. The status section at
 > the end was updated after implementation. For what the code does today, read

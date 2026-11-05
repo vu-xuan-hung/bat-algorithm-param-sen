@@ -101,7 +101,8 @@ Edge behaviour worth knowing:
 - `A0 = 0`: no candidate can ever be accepted, so the best stays at the initial best.
 - `A0 = 1`: the loudness gate passes on every draw until the bat's first decay.
 - `alpha = 1`: loudness never decays.
-- `r0 = 0`: every candidate is a local-search candidate, for the whole run.
+- `r0 = 0`: local search triggers whenever the pulse draw is > 0; this has probability
+  one under ideal continuous sampling. An exactly zero PRNG draw uses the global branch.
 - `r0 = 1`: no local search happens until a bat's first acceptance.
 - `f_min = f_max`: frequency is constant.
 - `population_size = 1`: the bat is always $X^*$, so its velocity stays exactly zero.

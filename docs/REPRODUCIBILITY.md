@@ -4,7 +4,10 @@ Verified 2026-11-05 on Linux x86_64, Python 3.12.13, package 0.1.0, NumPy 2.5.4,
 SciPy 1.18.1, scikit-learn 1.9.1, pandas 3.1.1, Matplotlib 3.11.2, PyYAML 6.0.3,
 pytest 9.2.0, Ruff 0.17.3 and mypy 2.4.1. requirements-lock.txt is the existing pinned
 runtime/dev environment snapshot. pyproject declares Python>=3.11; only 3.12 was checked.
-No usable Git repository, commit or tracked/untracked distinction was available.
+At the original audit no usable Git repository existed. Current publication uses the
+canonical bat-algorithm-param-sen/ clone on main; snapshot 19f20b2 was pushed to the new
+user-selected GitHub repository and verified by ls-remote and GitHub API. The original
+ba-clustering/ directory remains an archive without Git metadata.
 
 ## Environment and installation status
 
@@ -17,14 +20,19 @@ The existing .venv and editable package work. Invocations from project root:
 .venv/bin/ba-clustering run --dataset iris --seed 0 --set max_iterations=5
 ```
 
-A fresh isolated offline editable install with --no-deps --no-build-isolation failed:
-setuptools.build_meta unavailable. An attempt to use uv's default cache also failed
-because its lock location is read-only. These are setup limits, not test failures.
-A complete fresh dependency download/install was not executed. requirements-lock.txt
-does not pin the setuptools build backend or provide wheel artifacts. Fresh installation
-must supply setuptools>=68 and dependencies declared in pyproject; do not claim an offline
-reproduction bundle exists. The README's new-environment recipe is identified as unverified.
-No dependency was changed in the working environment.
+A fresh online install now passed on Python 3.12.13 in a new venv without system site
+packages. Executed: pip install "setuptools>=68" wheel; pip install -r requirements-lock.txt;
+pip install --no-deps --no-build-isolation -e .; pip install -e ".[notebooks]"; pip check.
+The historical lock was used unchanged. Earlier offline/DNS failures are historical;
+network access was restored for this continuation. The original working venv was not modified.
+
+Build tools: setuptools 84.2.1, wheel 0.48.0. Notebook tools: ipykernel 7.4.0,
+nbformat 5.11.1, nbclient 0.11.0, jupyter_client 8.10.0, IPython 9.18.1.
+Full [freeze](verification/clean_environment_requirements.txt) is environment evidence,
+not a replacement lock. [Install audit](verification/clean_install_verification.json)
+and [check log](verification/clean_install_checks.txt) capture actual commands/results.
+Fresh environment: /tmp/ba-clean-verification-vytbfq0c/venv (temporary, recreate if removed).
+No offline wheel bundle or cross-platform installation was verified; only Python 3.12.13.
 
 ## Data and configuration provenance
 
@@ -93,11 +101,16 @@ a final source snapshot is in verification/source_sha256.json.
 
 ## Notebook environment
 
-Optional pyproject group notebooks declares ipykernel/nbformat/nbclient; installation
-attempt failed DNS and no such package was installed. requirements-lock.txt remains the
-verified base environment snapshot. scripts/run_notebook.py executes ordinary Python cells
-without those packages and embeds actual PNG/table outputs. This verifies computations,
-not Jupyter protocol or GUI behavior. See NOTEBOOK_GUIDE.md and notebook_audit.json.
+The optional notebooks group installed successfully in the fresh venv. nbformat schema
+validation passed before and after real Jupyter execution via nbclient/ipykernel. All
+10 code cells completed, with 48 successful experiment records and 11 embedded PNGs.
+The kernel executable was explicitly the fresh venv Python, using a temporary kernelspec.
+OMP_NUM_THREADS=OPENBLAS_NUM_THREADS=MKL_NUM_THREADS=1 for this check. Outputs went to a
+new temporary root, not historical result directories; only algorithm seeds 0,1 were used.
+See verification/jupyter_kernel_audit.json and parameter_sensitivity.jupyter.ipynb.
+Original sequential-runner notebook/evidence is preserved. VS Code GUI interaction and
+cross-machine bit-for-bit reproduction remain unverified. These new thread settings do
+not retroactively characterize the old pilots.
 
 
 Publication scope: the original workspace retains all historical raw pilot and notebook

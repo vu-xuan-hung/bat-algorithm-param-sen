@@ -12,9 +12,13 @@ configurations: configs; documentation: docs; permanent observations: results.
 Group source documents live in the parent directory and must remain untouched.
 BA, SSE, K-Means, OFAT/grid/repeated experiments, JSONL/CSV, resume and plots exist.
 On 2026-11-05 the takeover verified 372 tests, 8 integration tests, lint, format and mypy.
-No usable Git repository exists; no verified commit or historical diff is available.
-Do not initialize Git or commit without an explicit request. Use the file hashes in
-verification evidence to distinguish existing from changed files.
+The original ba-clustering/ archive has no .git. The canonical Git clone is the sibling
+bat-algorithm-param-sen/ repository, on main, origin
+https://github.com/vu-xuan-hung/bat-algorithm-param-sen.git. Snapshot 19f20b2 was verified
+on GitHub after the user selected that new, empty destination. Preserve its history.
+The user authorized the necessary verification/documentation commit and push in this
+continuation; unrelated future commits still need user authorization. Never force-push.
+Use verification evidence to distinguish historical snapshots from current state.
 
 ## Mathematical invariants
 
@@ -66,10 +70,18 @@ Current limits and concrete next tasks are in docs/HANDOFF.md.
 ## Notebook continuation
 
 User requested a notebook, path-based user CSV loading, and one subagent to push the
-finished project to https://github.com/vu-xuan-hung/bat-algorithm. This authorizes the
+finished project; the destination was subsequently changed by the user to
+https://github.com/vu-xuan-hung/bat-algorithm-param-sen. This authorizes the
 necessary Git commit/push workflow for that destination; never force-push or replace
 remote work. Inspect the remote first. Parent documents/user datasets/caches stay local.
 Notebook: notebooks/parameter_sensitivity.ipynb; CSV examples: datasets/; runner:
-scripts/run_notebook.py. Follow docs/NOTEBOOK_GUIDE.md. Notebook outputs are real Python
-cell execution; Jupyter GUI/kernel execution remains unverified. Default seeds are 0,1;
+scripts/run_notebook.py. Follow docs/NOTEBOOK_GUIDE.md. Original notebook outputs are real Python
+cell execution. A separate executed artifact now verifies a real Jupyter kernel in a
+fresh environment; VS Code GUI interaction remains unverified. Default seeds are 0,1;
 results go to unique session directories. Notebook tests use temporary output roots.
+
+
+Formal discovery/confirmation is still NOT authorized to run. Read
+docs/FORMAL_PROTOCOL_PROPOSAL.md as a proposal, not a frozen protocol. Both new kernel
+verification and clean-environment tests used only smoke seeds and temporary outputs.
+No src/, tests/, configs/ or baseline lock content changed in this verification continuation.

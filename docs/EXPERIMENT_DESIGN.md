@@ -86,3 +86,17 @@ confirmation: freeze the candidate and practical threshold, then run only the fi
 prespecified comparisons. Retain raw results, failures and deviations. Confirmation on
 unseen seeds for the same datasets addresses stochastic robustness, not generalization
 to unseen datasets. No formal run is authorized by a passing smoke test.
+
+
+## Formal proposal awaiting freeze
+
+[FORMAL_PROTOCOL_PROPOSAL](FORMAL_PROTOCOL_PROPOSAL.md) specifies a concrete draft:
+SSE/TSS analysis endpoint with equal dataset weighting, 25 OFAT conditions plus prespecified
+A0/alpha and f_min/f_max grids (33 unique BA configs), paired discovery/confirmation,
+selection/tie/failure rules and explicit multiplicity families. Stock-runner discovery
+costs 3.87M BA evaluations because cross-experiment deduplication is absent; distinct-
+candidate confirmation adds 360k (4.23M total), with K-Means costs reported separately.
+Formal normalization/selection/correction analysis and role-aware confirmation definitions
+are NOT implemented/frozen. Proposed 1%/2% thresholds need review and power assessment.
+No discovery or confirmation seed was executed. Publication or a passing notebook does
+not authorize running a formal phase.

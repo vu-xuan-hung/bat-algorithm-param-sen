@@ -1,5 +1,11 @@
 # Mathematical and scientific audit — 2026-11-05
 
+> Historical audit/plan below is preserved. Latest continuation verified a clean online
+> installation and real Jupyter kernel, and published snapshot 19f20b2 to the new
+> bat-algorithm-param-sen repository. See HANDOFF.md and verification/publication_status.md
+> for current state; the earlier fresh-install/Git limitations below are superseded.
+
+
 ## Audited specification
 
 The production equations match the requested baseline. Frequency uses one beta per bat,

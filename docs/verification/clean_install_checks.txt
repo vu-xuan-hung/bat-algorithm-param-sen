@@ -1,0 +1,174 @@
+$ /tmp/ba-clean-verification-vytbfq0c/venv/bin/python -m pytest
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.2.0, pluggy-1.7.0
+rootdir: /home/vxh/Desktop/New Folder/bat-algorithm-param-sen
+configfile: pyproject.toml
+testpaths: tests
+plugins: platformdirs-4.14.5, cov-7.1.0
+collected 372 items
+
+tests/test_ba_updates.py ..............................................  [ 12%]
+tests/test_boundaries.py ..........                                      [ 15%]
+tests/test_clustering.py ............................................... [ 27%]
+.................................................                        [ 40%]
+tests/test_config.py ................................................... [ 54%]
+....                                                                     [ 55%]
+tests/test_experiments.py .............................................. [ 68%]
+.............                                                            [ 71%]
+tests/test_fitness.py ...................                                [ 76%]
+tests/test_frequency_diagnostics.py ..                                   [ 77%]
+tests/test_integration.py .......                                        [ 79%]
+tests/test_notebook.py ...                                               [ 79%]
+tests/test_reproducibility.py ...............                            [ 83%]
+tests/test_state_consistency.py ........................................ [ 94%]
+....................                                                     [100%]
+
+============================= 372 passed in 4.98s ==============================
+exit=0
+
+$ /tmp/ba-clean-verification-vytbfq0c/venv/bin/python -m pytest -m integration
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.2.0, pluggy-1.7.0
+rootdir: /home/vxh/Desktop/New Folder/bat-algorithm-param-sen
+configfile: pyproject.toml
+testpaths: tests
+plugins: platformdirs-4.14.5, cov-7.1.0
+collected 372 items / 364 deselected / 8 selected
+
+tests/test_integration.py .......                                        [ 87%]
+tests/test_notebook.py .                                                 [100%]
+
+====================== 8 passed, 364 deselected in 2.70s =======================
+exit=0
+
+$ /tmp/ba-clean-verification-vytbfq0c/venv/bin/python -m ruff check src tests scripts
+All checks passed!
+exit=0
+
+$ /tmp/ba-clean-verification-vytbfq0c/venv/bin/python -m ruff format --check src tests scripts
+34 files already formatted
+exit=0
+
+$ /tmp/ba-clean-verification-vytbfq0c/venv/bin/python -m mypy
+Success: no issues found in 16 source files
+exit=0
+
+$ /tmp/ba-clean-verification-vytbfq0c/venv/bin/python -c import ba_clustering,sys; print(sys.executable); print(ba_clustering.__file__)
+/tmp/ba-clean-verification-vytbfq0c/venv/bin/python
+/home/vxh/Desktop/New Folder/bat-algorithm-param-sen/src/ba_clustering/__init__.py
+exit=0
+
+$ /tmp/ba-clean-verification-vytbfq0c/venv/bin/ba-clustering --help
+usage: ba-clustering [-h] {run,list,experiment,plot} ...
+
+Bat Algorithm clustering and parameter sensitivity.
+
+positional arguments:
+  {run,list,experiment,plot}
+    run                 Run BA and K-Means once and print a JSON summary.
+    list                List experiments.
+    experiment          Run a declared experiment.
+    plot                Generate figures from saved results.
+
+options:
+  -h, --help            show this help message and exit
+exit=0
+
+$ /tmp/ba-clean-verification-vytbfq0c/venv/bin/ba-clustering list
+smoke: Fast end-to-end check of the pipeline. Its output is not research evidence.
+baseline_pilot: Pilot comparison of K-Means and reference BA on pilot seeds (roadmap W3.2, W4.4).
+ofat_pilot: Pilot OFAT over all six parameters on pilot seeds, to check feasibility (W4.4).
+interaction_pilot: Demonstrates the 3x3 grid design. The pair is a placeholder, not a screening result.
+ofat_discovery: Formal OFAT screening on discovery seeds (W5.1 to W6.1). Not run yet.
+confirmation: Unseen-seed confirmation (W7.2). Do not run until a candidate is frozen; then copy this entry, and put the frozen values in ba_overrides. As written it evaluates the reference.
+exit=0
+
+$ /tmp/ba-clean-verification-vytbfq0c/venv/bin/ba-clustering run --dataset iris --seed 0 --set max_iterations=5
+{
+  "dataset": {
+    "name": "iris",
+    "n_samples": 150,
+    "n_features": 4,
+    "n_clusters": 3,
+    "source": "sklearn.datasets.load_iris (bundled with scikit-learn)",
+    "has_external_labels": true,
+    "generator": null
+  },
+  "preprocessing": "zscore",
+  "ba": {
+    "config": {
+      "population_size": 30,
+      "max_iterations": 5,
+      "n_clusters": 3,
+      "A0": 0.5,
+      "r0": 0.5,
+      "alpha": 0.9,
+      "gamma": 0.9,
+      "f_min": 0.0,
+      "f_max": 2.0,
+      "seed": 0,
+      "tolerance": 0.0,
+      "patience": null
+    },
+    "status": "completed",
+    "error": null,
+    "sse": 219.67838717773486,
+    "silhouette": 0.43558554692150653,
+    "ari_external": 0.5836460312644706,
+    "n_empty_clusters": 0,
+    "runtime_seconds": 0.0030534190000253147,
+    "n_evaluations": 180,
+    "n_iterations": 5,
+    "stop_reason": "max_iterations",
+    "evaluations_to_plateau": 150,
+    "n_local_candidates": 89,
+    "n_accepted": 42,
+    "n_accepted_local": 42,
+    "n_accepted_global": 0,
+    "n_clipped_coordinates": 452,
+    "max_abs_velocity_final": 20.9656417100581,
+    "n_lloyd_iterations": null
+  },
+  "kmeans": {
+    "config": {
+      "n_clusters": 3,
+      "seed": 0,
+      "n_init": 10,
+      "init": "k-means++",
+      "max_iter": 300,
+      "tol": 0.0001
+    },
+    "status": "completed",
+    "error": null,
+    "sse": 139.82543466174207,
+    "silhouette": 0.45937792074496625,
+    "ari_external": 0.6100728505285608,
+    "n_empty_clusters": 0,
+    "runtime_seconds": 0.0133083450000413,
+    "n_evaluations": null,
+    "n_iterations": null,
+    "stop_reason": null,
+    "evaluations_to_plateau": null,
+    "n_local_candidates": null,
+    "n_accepted": null,
+    "n_accepted_local": null,
+    "n_accepted_global": null,
+    "n_clipped_coordinates": null,
+    "max_abs_velocity_final": null,
+    "n_lloyd_iterations": 53,
+    "restart_sse": [
+      140.90153181202442,
+      191.02473685317966,
+      139.82543466174207,
+      140.90153181202442,
+      140.0820210962167,
+      191.02473685317966,
+      140.0327527742865,
+      140.0327527742865,
+      140.90153181202442,
+      140.0327527742865
+    ],
+    "history": null
+  }
+}
+exit=0

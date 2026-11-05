@@ -61,3 +61,15 @@ label column, one feature and K=2 (48 records, 11 PNGs). Default 90x2 synthetic 
 ran all 10 code cells and produced 11 inline PNGs. See NOTEBOOK_GUIDE and notebook_audit.
 An intermediate integration check exposed a missing output-root override in the exported
 notebook; the source was corrected and re-executed, with no test relaxation.
+
+
+## Latest: clean install and real Jupyter kernel
+
+Fresh Python 3.12.13 venv, no system site packages, original lock installed unchanged:
+372 tests passed in 4.98s; separate integration 8 passed/364 deselected in 2.70s.
+Ruff passed, 34 files formatted, mypy passed on 16 source files; pip check found no broken
+requirements. CLI help/list/single-run smoke passed. Exact logs: clean_install_checks.txt.
+Real nbclient/ipykernel execution passed nbformat schema validation and all 10 code cells,
+producing 28 OFAT+20 grid records and 11 genuine inline PNGs; seeds 0,1 only. Original
+notebook and historical results were not overwritten. GUI interaction was not tested.
+Evidence: verification/jupyter_kernel_audit.json and parameter_sensitivity.jupyter.ipynb.

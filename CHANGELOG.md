@@ -33,3 +33,18 @@ identify historical code by a commit. No Git commit was created.
 - Latest checks: 372 tests, 8 integration tests, Ruff/format and mypy pass.
 - User requested one subagent to push the finished project to vu-xuan-hung/bat-algorithm;
   remote connectivity/publication must be reported from actual evidence.
+
+
+## 2026-11-05 — publication recovery and clean-environment verification
+
+- User changed GitHub destination to vu-xuan-hung/bat-algorithm-param-sen. Verified it was
+  empty, pushed unchanged snapshot 19f20b2 to main, and confirmed the SHA via GitHub API
+  and ls-remote. Old destination and historical source archive were not modified by Git.
+- Verified the README installation sequence in a fresh Python 3.12.13 venv using the
+  original pinned runtime/dev lock, then notebook extras; pip check and all 372 tests,
+  8 integration tests, Ruff/format/mypy passed.
+- Validated/executed the notebook using an actual Jupyter kernel: 10 code cells,
+  48 successful records, 11 PNGs. Stored separate executed artifact and audits, preserving
+  prior notebook outputs and research results. VS Code GUI was not exercised.
+- Updated current documentation and prepared a formal protocol proposal, not frozen or
+  executed. No BA/source/test/config/legacy-lock change or formal seed consumption.

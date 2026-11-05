@@ -16,7 +16,8 @@ confirmation have not been run in this takeover. See [handoff](docs/HANDOFF.md).
 
 ## Installation
 
-Run commands from `ba-clustering/`. Python >=3.11 is declared; Python 3.12.13 was verified.
+Run commands from the cloned repository root (the directory containing `pyproject.toml`).
+Python >=3.11 is declared; Python 3.12.13 was verified.
 The existing `.venv` already contains the dependencies and editable package. To recreate:
 
 ```bash
@@ -26,9 +27,11 @@ python3 -m venv .venv
 .venv/bin/python -m pip install --no-deps --no-build-isolation -e .
 ```
 
-Fresh dependency installation remains unverified. An isolated offline attempt failed
-because the build backend was missing; the setup recipe above explicitly supplies it.
-See [reproducibility](docs/REPRODUCIBILITY.md) for the exact verified environment and limits. Prefix CLI commands with `.venv/bin/` when not activating the environment.
+The recipe above passed in a fresh Python 3.12.13 venv with no system site packages.
+The pinned lock, editable install and `pip check` passed. For a Jupyter kernel, also run
+`.venv/bin/python -m pip install -e ".[notebooks]"` (verified in that fresh environment).
+See [reproducibility](docs/REPRODUCIBILITY.md) for the captured environment.
+Prefix CLI commands with `.venv/bin/` when not activating the environment.
 
 ## Quick start and CLI
 
@@ -124,9 +127,11 @@ Mở [parameter_sensitivity.ipynb](notebooks/parameter_sensitivity.ipynb), sửa
 có CSV mẫu; hỗ trợ cả đường dẫn tuyệt đối đến CSV riêng. Notebook so sánh BA/K-Means,
 OFAT sáu tham số và grid A0/r0, lưu raw results và 11 biểu đồ/bảng từ lần chạy đã kiểm tra.
 Mặc định chỉ dùng seed kỹ thuật 0,1. Xem [hướng dẫn](docs/NOTEBOOK_GUIDE.md).
-Toàn bộ cell đã chạy bằng Python runner; kernel VS Code/Jupyter chưa được kiểm chứng
-vì tải dependency bị lỗi DNS. Nhóm dependency tùy chọn `.[notebooks]` được khai báo;
-không cần nhóm này để dùng `scripts/run_notebook.py`.
+Toàn bộ 10 code cell đã chạy qua kernel Jupyter thực tế trong môi trường sạch: 48 records,
+11 PNG, không lỗi. [Notebook kiểm chứng kernel](docs/verification/parameter_sensitivity.jupyter.ipynb)
+và [audit](docs/verification/jupyter_kernel_audit.json) được lưu riêng; outputs cũ được giữ
+nguyên. Giao diện VS Code chưa được kiểm tra tương tác. `.[notebooks]` cung cấp các dependency
+kernel; Python runner vẫn dùng được khi không cần Jupyter.
 
 
 Publication scope: the original workspace retains all historical raw pilot and notebook
@@ -135,3 +140,5 @@ results and all private/user datasets; it includes the executed synthetic notebo
 selected audit evidence under docs/verification. A fresh clone will not contain the
 historical raw pilot files. Reproduce engineering checks into fresh output directories;
 do not present newly generated runs as the original historical evidence.
+
+Repository đang xuất bản: [vu-xuan-hung/bat-algorithm-param-sen](https://github.com/vu-xuan-hung/bat-algorithm-param-sen). Xem [trạng thái GitHub](docs/verification/publication_status.md) và [đề xuất formal chưa chạy](docs/FORMAL_PROTOCOL_PROPOSAL.md).
