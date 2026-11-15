@@ -33,6 +33,27 @@ datasets:
   wine:
     loader: wine
     n_clusters: 3
+  # Run scripts/fetch_uci_datasets.py once from the repository root.
+  rice:
+    loader: csv
+    path: datasets/rice.csv
+    n_clusters: 2
+    label_column: Class
+  dry_bean:
+    loader: csv
+    path: datasets/dry_bean.csv
+    n_clusters: 7
+    label_column: Class
+  htru2:
+    loader: csv
+    path: datasets/htru2.csv
+    n_clusters: 2
+    label_column: class
+  letter_recognition:
+    loader: csv
+    path: datasets/letter_recognition.csv
+    n_clusters: 26
+    label_column: lettr
   synthetic:
     loader: synthetic
     n_clusters: 4

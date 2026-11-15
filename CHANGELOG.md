@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-11 — UCI benchmark datasets
+
+- Registered Rice, Dry Bean, HTRU2 and Letter Recognition as local CSV datasets.
+- Added a SHA-256-verified UCI downloader and documented CLI and notebook settings.
+
 ## 2026-11-05 — independently verified continuation
 
 - Audited the existing implementation; original 340 tests passed. No usable Git history.

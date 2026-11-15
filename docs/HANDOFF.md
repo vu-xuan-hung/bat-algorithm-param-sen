@@ -251,3 +251,42 @@ Verify current HEAD/origin and actual evidence. Clean install, 372 tests/8 integ
 real Jupyter 10 cells/48 records/11 PNGs passed. Preserve original archive/results and BA
 semantics. Start with protocol review/analysis prerequisites; do not run discovery or
 confirmation, alter rosters, force-push or commit unrelated work without authorization.
+
+## 2026-11-11 — Larger UCI datasets
+
+On the local Windows branch `new_databases`, added Rice, Dry Bean, HTRU2 and Letter
+Recognition to `configs/default.yaml`. They load through the existing CSV reader with
+z-score preprocessing, fixed K equal to the class count, and labels reserved for ARI.
+The [dataset guide](../datasets/README.md#uci-benchmarks) records the source, CSV names,
+shapes, K values, label headers and notebook settings. Iris and Wine are available for
+quick checks. The formal protocol is still a proposal and its dataset roster has not
+been revised for these benchmarks.
+
+Verified all four UCI downloads and the repeat-invocation checksum check using
+`python scripts/fetch_uci_datasets.py`. Verified that a conflicting local CSV is
+preserved. Checked every row for finite features and counted the label values. The
+four `python -m ba_clustering.cli run --dataset <name> --seed 0 --set population_size=3
+--set max_iterations=1` checks each completed BA (six SSE evaluations) and K-Means
+with finite SSE and ARI. The CLI writes no result files. No formal seeds were used.
+
+Windows Python 3.14.7 verification from the project root:
+
+- `.venv/Scripts/python.exe -m pytest` passed 372 tests in 10.47 s.
+- `.venv/Scripts/python.exe -m pytest -m integration` passed 8 tests in 4.50 s.
+- `.venv/Scripts/ruff.exe check src tests scripts` passed after formatting one long
+  line. `.venv/Scripts/ruff.exe format --check src tests scripts` passed for 35 files.
+  `.venv/Scripts/mypy.exe --cache-dir .venv/mypy-uci-cache` passed on 16 modules.
+- The locked dependency install, editable package install and `python -m pip check`
+  passed. The initial sandboxed venv creation failed at ensurepip, and UCI/PyPI
+  network access failed at DNS resolution. Approved retries succeeded.
+- The sandbox denied Windows path resolution on the notebook's CSV inputs, causing one
+  failure in each pytest invocation and stopping the first Rice notebook run.
+  Both suites passed outside the sandbox. The Rice rerun through
+  `scripts/run_notebook.py --input notebooks/parameter_sensitivity.ipynb --output <fresh-path>`
+  completed 10 code cells, 28 OFAT records, 20 grid records and 11 embedded PNGs, with
+  seeds 0 and 1 and fresh output under the ignored venv. The initial CLI-check wrapper
+  used the wrong ARI key; the successful wrapper checked `ari_external`.
+
+The full notebook was exercised on Rice. Dry Bean, HTRU2 and Letter Recognition were
+exercised through the CLI smoke checks. Larger notebook sweeps repeat the full-data
+silhouette calculation, with approximately quadratic cost in rows per run.

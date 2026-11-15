@@ -44,6 +44,10 @@ Prefix CLI commands with `.venv/bin/` when not activating the environment.
 `run` prints JSON and writes no results. Dataset names come from `configs/default.yaml`.
 `--set NAME=VALUE` may be repeated for BA settings. `--config PATH` selects a base file.
 
+Iris and Wine are available for quick checks. For Rice, Dry Bean, HTRU2 and Letter
+Recognition, run `python scripts/fetch_uci_datasets.py` once. The
+[dataset guide](datasets/README.md#uci-benchmarks) lists the CLI names and notebook settings.
+
 Use a fresh output root for verification (the directory returned by `mktemp` is unique):
 
 ```bash
