@@ -25,6 +25,10 @@ resolved relative to the invoking working directory. External labels affect ARI 
 Dataset validates feature content, K bounds and label length; custom Dataset objects must
 supply the declared ndarray types and one-dimensional external labels.
 
+Rice, Dry Bean, HTRU2 and Letter Recognition use the same CSV loader and preprocessing
+path. See the [dataset guide](../datasets/README.md#uci-benchmarks) for the source, fixed
+K, label column and one-time setup for each. The downloader pins the raw CSV bytes.
+
 Z-score: (X-mean)/population_std, ddof=0, once per dataset. Exactly constant features
 use mean=their value and scale=1, becoming zero. 'none' returns a copy. The estimator
 does not preprocess itself. Save the preprocessing metadata and apply it to prediction

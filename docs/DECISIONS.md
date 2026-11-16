@@ -1,8 +1,8 @@
 # Architecture Decision Records
 
 Each record states what was decided and why. Add a new record rather than editing the
-decision of an old one; mark the old one superseded and link to its replacement. All
-records below are dated 2026-11-05 and have status **accepted**.
+decision of an old one; mark the old one superseded and link to its replacement. Records
+without an explicit date or status were accepted on 2026-11-05.
 
 "The brief" means the project specification this repository was built from. Its
 requirements are summarised in [PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md) and encoded in
@@ -407,3 +407,19 @@ from defects without substituting another BA variant. Historical outputs remain 
 No velocity reversal, refinement or alternative implementation was introduced.
 
 **Evidence:** SCIENTIFIC_AUDIT.md and verification/frequency_diagnostics.json.
+
+---
+
+## ADR-016: Register larger UCI benchmarks as opt-in local CSVs
+
+**Date/status:** 2026-11-11, accepted.
+
+**Decision.** Use UCI's headered CSVs with the existing CSV loader. Pin the original
+bytes by SHA-256 in the download script and store the files in the ignored `datasets/`
+directory. Set K from the published class count and use class labels for ARI only.
+Use the base configuration's z-score preprocessing. Preserve the full rows, feature
+order and natural class frequencies. Include new datasets in formal designs only after
+the protocol is reviewed and frozen.
+
+**Reason.** These benchmarks increase data size, feature count or K and cover class
+imbalance while using the same preprocessing, optimizer and evaluation pipeline.

@@ -4,6 +4,8 @@ Mở [parameter_sensitivity.ipynb](../notebooks/parameter_sensitivity.ipynb) t�
 hoặc `notebooks/`. Chọn Python `.venv`. Sửa DATASET_PATH, N_CLUSTERS, LABEL_COLUMN ở ô
 cấu hình rồi Run All. Ví dụ CSV và quy ước cột nằm trong [datasets](../datasets/README.md).
 Có thể nhập địa chỉ tuyệt đối; không bắt buộc chuyển file vào project.
+Với Rice, Dry Bean, HTRU2 và Letter Recognition, xem lệnh tải và cấu hình tương ứng
+trong [bảng dữ liệu UCI](../datasets/README.md#uci-benchmarks).
 
 Notebook gồm kiểm tra SSE/velocity toy, tải/chuẩn hóa dữ liệu, OFAT sáu tham số,
 grid A0/r0, so sánh BA reference/K-Means, hội tụ, sample SD/mean CI, bảng paired
